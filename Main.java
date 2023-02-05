@@ -17,11 +17,11 @@ public class Main {
          if(checkAttendance == isPresent) {
         	System.out.println("employee is present");
         	daycount=20;
-        	WorkingHours=160;
+        	WorkingHours=100;
         }else if (checkAttendance == partTime) {
         	System.out.println("employee is working part time");
         	daycount=10;
-        	WorkingHours=80;
+        	WorkingHours=50;
         }else if(checkAttendance == isAbsent){
         	System.out.println("employee is absent");
         }else {
