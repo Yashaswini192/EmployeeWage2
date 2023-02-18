@@ -2,19 +2,24 @@ package com.bl;
 
 public class EmpWage {
 
-	static int isPresent = 1 ;
-	static int isAbsent = 0 ;
-	static final int part_time = 1;
-	static final int full_time = 2;
-	//static int wagePerHour = 20;
-	//static int fulldayHours = 20;
-	//static int workingDaysPerMonth = 2;
-	//static int totalWorkingHours = 0;
-	//static int WorkingHours = 0;
+	public static final int part_time = 1;
+	public static final int full_time = 2;
+	private  static String company;
+	private  static int wagePerHour;
+	private static int totalWorkingHours;
+	private  static int numOfWorkingDays;
+	private static  int EmpMonthlyWages;
 
-	public static int Attendance(String company,int wagePerHour,int totalWorkingHours,int numOfWorkingDays) {
+	public void EmpWageBuilderObject(String company,int wagePerHour,int totalWorkingHours,int numOfWorkingDays){
+		this.company = company;
+		this.wagePerHour = wagePerHour;
+		this.totalWorkingHours = totalWorkingHours;
+		this.numOfWorkingDays = numOfWorkingDays;
+	}
 
-		int empHrs =  0,totalEmpHrs = 0, totalWorkingDays =0;
+	public void Attendance() {
+
+		int empHrs =  0,totalEmpHrs = 0, totalWorkingDays = 0;
 
 		while(totalEmpHrs <= totalWorkingHours && totalWorkingDays < numOfWorkingDays) {
 
@@ -24,41 +29,30 @@ public class EmpWage {
 			case part_time:
 				System.out.println("employee is present");
 				empHrs = 4;
-				//workingDaysPerMonth = 20;
 				break;
 			case full_time:
 				System.out.println("employee is absent");
 				empHrs = 8;
-				//workingDaysPerMonth = 0;
 				break;
 			default:
 				empHrs = 0;
 			}
 			totalEmpHrs += empHrs; 
 			System.out.println("day:" + totalWorkingDays + " Employee hour: " + empHrs);
+			
 		}
+		EmpMonthlyWages = totalEmpHrs * wagePerHour ;
+	}
+	
 
+	@Override
+	public String toString() {
+		return "EmpWage [company=" + company + ", wagePerHour=" + wagePerHour + ", totalWorkingHours="
+				+ totalWorkingHours + ", numOfWorkingDays=" + numOfWorkingDays + ", EmpMonthlyWages=" + EmpMonthlyWages
+				+ "]";
+	}	
 
-		int EmpMonthlyWages = totalEmpHrs * wagePerHour ;
-		System.out.println("Employee monthly wages for company: " + company + " is :"+ EmpMonthlyWages);
-		return EmpMonthlyWages;
-
-	}				
 }
 
-/*class Dailywages extends EmpWage{ //single Inheritance
 
 
-	public void dailywage() {
-
-	//	totalWorkingHours = workingDaysPerMonth *  WorkingHours ; 
-	//	System.out.println("totalworkingHours:"+totalWorkingHours);
-
-	//	int dailyWages = WorkingHours * wagePerHour ;
-		System.out.println("dailywages:"+dailyWages);
-
-		int MonthlyWages = totalWorkingHours * dailyWages ;
-		System.out.println("Employee monthly wages is :" +MonthlyWages);
-
-	}
-}*/
